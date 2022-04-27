@@ -1,3 +1,22 @@
-https://grap3fruit.dev/blog/%EA%B5%AC%EB%A6%84(goorm),-%EB%B0%B1%EC%A4%80(BOJ)-%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8-JavaScript%EB%A1%9C-%EC%9E%85%EB%A0%A5%EB%B0%9B%EB%8A%94-%EB%B0%A9%EB%B2%95-%EC%A0%95%EB%A6%AC
-
 https://nyang-in.tistory.com/156
+
+/_
+sort() - O(n log n)
+자바스크립트는 숫자도 문자열 취급한 뒤 정렬한다.
+그래서 return a - b 를 준다.
+음수가 리턴되면 a < b 를 의미,
+양수가 리턴되면 a > b 를 의미,
+0이 리턴되면 a == b을 의미한다.
+_/
+
+const arr1 = [100, 3, 20];
+arr1.sort(); // [ 100, 20, 3 ]
+
+arr1.sort(function (a, b) {
+return a - b;
+});
+
+console.log(arr1); // [ 3, 20, 100 ]
+
+// array method의 시간복잡도
+// https://kimyejin.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Array-%EB%A9%94%EC%86%8C%EB%93%9C-%EB%B0%8F-%EC%98%88%EC%A0%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EC%8B%9C%EA%B0%84-%EB%B3%B5%EC%9E%A1%EB%8F%84-Big-O
