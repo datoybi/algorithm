@@ -28,46 +28,57 @@
 
 // 1 색깔별로 정렬하기
 // 2. 양 옆과 비교하여 최소값 더하기
+// 주의! 이문제는 readline으로 풀어야함!
 
 "use strict";
-
-const { mainModule } = require("process");
-
-function solution() {}
-
-const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
-const input = require("fs")
-  .readFileSync(filePath)
-  .toString()
-  .trim()
-  .split("\r\n");
-
-const n = input.shift();
-const arr = input.map((el) => el.split(" "));
-console.log(arr);
-
-// 같은 색 끼리 묶기
-const collected = arr.reduce((acc, el, idx) => {
-  const [id, color] = el;
-  if (acc[color]) acc[color].push(id);
-  else acc[color] = [id];
-
-  return acc;
-}, {});
-
-console.log(collected);
-
-// 정렬하기
-Object.values(collected).forEach((el) => el.sort((a, b) => a - b));
-console.log(Object.values(collected));
-let sum = 0;
-
-Object.values(collected).forEach((wrap) => {
-  wrap.forEach((el, idx) => {
-    console.log(el);
-    console.log(idx);
-    const min = idx - 1 < 0 ? null : idx - 1;
-    // const max = idx+1 > .le ? null : idx-1
-    console.log(wrap.length);
+(() => {
+  const readline = require("readline");
+  const r1 = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
   });
-});
+
+  const buffer = [];
+  r1.on("line", function (line) {
+    buffer.push(line);
+  }).on("close", function () {
+    main(buffer);
+  });
+})();
+
+const solution = (arr) => {
+  let sum = 0;
+  // 같은 색 끼리 묶기
+  const collected = arr.reduce((acc, el, idx) => {
+    const [id, color] = el;
+    if (acc[color]) acc[color].push(id);
+    else acc[color] = [id];
+    return acc;
+  }, {});
+
+  // 정렬하기
+  Object.values(collected).forEach((el) => el.sort((a, b) => a - b));
+  // 양 옆 비교하며 sum 구하기
+  Object.values(collected).forEach((wrap) => {
+    wrap.forEach((el, idx, arr) => {
+      const smaller = arr[idx + 1] - el;
+      const bigger = el - arr[idx - 1];
+
+      if (idx === 0) {
+        sum += smaller;
+      } else if (idx === wrap.length - 1) {
+        sum += bigger;
+      } else {
+        sum += Math.min(smaller, bigger);
+      }
+    });
+  });
+  return sum;
+};
+
+const main = (input) => {
+  input.toString().trim().split("\n");
+  input.shift();
+  const arr = input.map((el) => el.split(" "));
+  console.log(solution(arr));
+};

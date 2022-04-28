@@ -26,3 +26,5 @@ JS 에서 Number 범위? 천조
 
 획인도 해보기
 console.log( Number.isSafeInteger(a) );
+
+https://hanch-dev.tistory.com/4
