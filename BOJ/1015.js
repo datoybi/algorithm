@@ -1,3 +1,4 @@
+
 // 시간복잡도 n^2으로 풀어보기
 // const fs = require("fs");
 // // var input = fs.readFileSync("/dev/stdin").toString().split("\n");
@@ -24,7 +25,6 @@
 // console.log(solution(a));
 
 // 시간복잡도 NlonN으로 풀어보기
-
 const fs = require("fs");
 // var input = fs.readFileSync("/dev/stdin").toString().split("\n");
 const input = fs.readFileSync("input.txt").toString().split("\n");
