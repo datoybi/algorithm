@@ -28,3 +28,4 @@ JS 에서 Number 범위? 천조
 console.log( Number.isSafeInteger(a) );
 
 https://hanch-dev.tistory.com/4
+https://serzhul.io/Algorithm/%EB%B0%B0%EC%97%B4%EA%B3%BC-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D-(big-o)/
