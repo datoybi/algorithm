@@ -21,6 +21,7 @@
 		3. 총 시간복잡도 O((N + M) log M)
 */
 
+// 입력
 (() => {
   const readline = require("readline");
   const r1 = readline.createInterface({
@@ -36,50 +37,42 @@
   });
 })();
 
+// 메인
 const main = (input) => {
   console.log(input);
   input.shift();
   let aCnt, bCnt;
 
+  // 배열 생성 및 정렬
   for (let i = 0; i < input.length; i += 3) {
     [aCnt, bCnt] = input[i].split(" ");
     a = input[i + 1].split(" ");
     b = input[i + 2].split(" ").sort((a, b) => a - b); // B 정렬
-
     console.log(a);
     console.log(b);
 
-    
+    // a 순회
+    let sum = 0;
+    a.forEach((num) => {
+      console.log(num);
+      sum += binarySearch(b, 0, bCnt - 1, num) + 1;
+    });
+    console.log(sum);
   }
 };
 
-// 이분 탐색?? 어캐 할거냐면
-// const arr = [0, 2, 3, 4, 5, 6, 7, 8, 9];
-// const num = 8;
-
-// let left = 0, right = arr.length - 1;
-
-// console.log(left);
-// console.log(right);
-// let half = parseInt((left + right) / 2, 10);
-// console.log(half);
-
-// let ans;
-
-// while(true){
-// 	console.log(left);
-// 	console.log(right);
-		
-// 	if(num === half){
-// 		ans = num;
-// 		break
-// 	};
-// 	if(num > half) { // 오른쪽에 있으면
-// 		left = half;
-// 	} else {
-// 		right = half;
-// 	}
-	
-// }
-
-// console.log(ans)
+// 이분 탐색
+const binarySearch = (a, l, r, num) => {
+  let result = l - 1;
+  while (l <= r) {
+    let mid = parseInt(l + r / 2, 10);
+    if (a[mid] < num) {
+      result = mid;
+      l = mid + 1;
+    } else {
+      r = mid - 1;
+    }
+  }
+  console.log("! " + result);
+  return result;
+};
