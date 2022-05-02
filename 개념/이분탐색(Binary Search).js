@@ -35,6 +35,23 @@
 		2. L, R, M, Result 변수의 정의를 헷갈려서 부등호 등을 잘못 쓰는 경우.
 		1. 입력된 배열에 바로 이분 탐색을 하는데, 정렬을 하지 않는 경우!
 
-		
+		BOJ 1920 - 수 찾기
+		BOJ 1764 - 듣보잡
+		BOJ 3273 - 두 수의 합
+		BOJ 10816 - 숫자 카드 2
 */
 
+// 이분 탐색
+const binarySearch = (arr, l, r, num) => {
+  let result = l - 1;
+  while (l <= r) {
+    let mid = parseInt((l + r) / 2, 10);
+    if (arr[mid] < num) {
+      result = mid;
+      l = mid + 1;
+    } else if (num <= arr[mid]) {
+      r = mid - 1;
+    }
+  }
+  return result;
+};

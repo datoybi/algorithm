@@ -1,4 +1,5 @@
 /* 먹을 것인가 먹힐 것인가
+맞았습니다!
 
 정답의 최대치
 	N = 20000, M = 20000
@@ -37,24 +38,22 @@
   });
 })();
 
-// 메인
 const main = (input) => {
-  console.log(input);
   input.shift();
   let aCnt, bCnt;
 
-  // 배열 생성 및 정렬
+  // 배열 생성 및 B배열 정렬
   for (let i = 0; i < input.length; i += 3) {
     [aCnt, bCnt] = input[i].split(" ");
-    a = input[i + 1].split(" ");
-    b = input[i + 2].split(" ").sort((a, b) => a - b); // B 정렬
-    console.log(a);
-    console.log(b);
+    a = input[i + 1].split(" ").map((el) => parseInt(el, 10));
+    b = input[i + 2]
+      .split(" ")
+      .map((el) => parseInt(el, 10))
+      .sort((a, b) => a - b); // B 정렬
 
     // a 순회
     let sum = 0;
     a.forEach((num) => {
-      console.log(num);
       sum += binarySearch(b, 0, bCnt - 1, num) + 1;
     });
     console.log(sum);
@@ -62,17 +61,16 @@ const main = (input) => {
 };
 
 // 이분 탐색
-const binarySearch = (a, l, r, num) => {
+const binarySearch = (arr, l, r, num) => {
   let result = l - 1;
   while (l <= r) {
-    let mid = parseInt(l + r / 2, 10);
-    if (a[mid] < num) {
+    let mid = parseInt((l + r) / 2, 10);
+    if (arr[mid] < num) {
       result = mid;
       l = mid + 1;
-    } else {
+    } else if (num <= arr[mid]) {
       r = mid - 1;
     }
   }
-  console.log("! " + result);
   return result;
 };
