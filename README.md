@@ -30,3 +30,10 @@ console.log( Number.isSafeInteger(a) );
 https://hanch-dev.tistory.com/4
 
 https://serzhul.io/Algorithm/%EB%B0%B0%EC%97%B4%EA%B3%BC-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D-(big-o)/
+
+
+아 인싸이트 얻은게 console.log를 매번 찎으면 안된다!
+되도록 변수에 담아서 한번만 뿌리기
+
+왜냐하면 찾아보니 console.log()의 시간복잡도가 O(N)인데 N이 무한대까지 커지게 된다면 시간을 꽤나 잡아 먹을 수 도 있기 때문에 굳이.. 매번 찎지 않아도 되는 쪽을 택하자
+
