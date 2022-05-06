@@ -48,9 +48,7 @@ const input = require("fs")
   r1.on("line", function (line) {
     buffer.push(line);
   }).on("close", function () {
-    console.log(buffer);
-    // const input = buffer[1].split(" ").map((x) => parseInt(x, 10));
-    main(input);
+    main(buffer);
   });
 })();
 
