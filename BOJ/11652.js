@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /*
 	가장 많이 가지고 있는 정수 출력, 여러가지면 작은 수 출력
 	될 수 있는 수가 엄청 크다 -> long long
@@ -68,6 +69,7 @@ const count = input.reduce((acc, cur) => {
 let max = 0;
 let answer = 0n;
 
+// eslint-disable-next-line no-restricted-syntax 
 for (let card in count) {
   if (max < count[card]) {
     max = count[card];
