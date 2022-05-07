@@ -1,5 +1,5 @@
+/* eslint-disable no-shadow */
 // fs
-"use strict";
 
 function solution(data) {}
 
@@ -12,8 +12,10 @@ const input = require("fs")
 
 // solution(arr)
 
-//////////////////readline//////////////////
-// readline을 권장한다고 합니다..
+// ************************
+// readline
+// ************************
+// readline을 권장한다고 합니다
 
 // 한줄
 // (() => {
@@ -45,9 +47,9 @@ const input = require("fs")
   });
 
   const buffer = [];
-  r1.on("line", function (line) {
+  r1.on("line", (line) => {
     buffer.push(line);
-  }).on("close", function () {
+  }).on("close", () => {
     main(buffer);
   });
 })();
