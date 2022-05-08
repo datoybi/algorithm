@@ -1,4 +1,3 @@
-
 // 시간복잡도 n^2으로 풀어보기
 
 // const fs = require("fs");
@@ -34,10 +33,10 @@ const a = input[1].split(" ");
 function solution(data) {
   let p = "";
   const b = [...a];
-  b.sort((a, b) => a - b);
+  b.sort((i, j) => i - j);
 
   a.forEach((el, i) => {
-    idx = b.indexOf(a[i]);
+    const idx = b.indexOf(a[i]);
     p += `${idx} `;
     b[idx] = -1;
   });

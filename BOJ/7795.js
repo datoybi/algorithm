@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 /* 먹을 것인가 먹힐 것인가
 맞았습니다!
 
@@ -31,25 +32,26 @@
   });
 
   const buffer = [];
-  r1.on("line", function (line) {
+  r1.on("line", (line) => {
     buffer.push(line);
-  }).on("close", function () {
+  }).on("close", () => {
     main(buffer);
   });
 })();
 
 const main = (input) => {
   input.shift();
-  let aCnt, bCnt;
+  let aCnt;
+  let bCnt;
 
   // 배열 생성 및 B배열 정렬
   for (let i = 0; i < input.length; i += 3) {
     [aCnt, bCnt] = input[i].split(" ");
-    a = input[i + 1].split(" ").map((el) => parseInt(el, 10));
-    b = input[i + 2]
+    const a = input[i + 1].split(" ").map((el) => parseInt(el, 10));
+    const b = input[i + 2]
       .split(" ")
       .map((el) => parseInt(el, 10))
-      .sort((a, b) => a - b); // B 정렬
+      .sort((y, z) => y - z); // B 정렬
 
     // a 순회
     let sum = 0;
@@ -64,7 +66,7 @@ const main = (input) => {
 const binarySearch = (arr, l, r, num) => {
   let result = l - 1;
   while (l <= r) {
-    let mid = parseInt((l + r) / 2, 10);
+    const mid = parseInt((l + r) / 2, 10);
     if (arr[mid] < num) {
       result = mid;
       l = mid + 1;

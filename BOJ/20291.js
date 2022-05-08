@@ -41,7 +41,7 @@
 
 // 남이 짠 코드
 function solution(arr) {
-  let ans = arr.reduce((acc, el) => {
+  const ans = arr.reduce((acc, el) => {
     if (!acc[el]) acc[el] = 1;
     else acc[el] += 1;
     return acc;

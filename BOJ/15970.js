@@ -39,7 +39,6 @@
 // 1 색깔별로 정렬하기
 // 2. 양 옆과 비교하여 최소값 더하기
 
-"use strict";
 (() => {
   const readline = require("readline");
   const r1 = readline.createInterface({
@@ -48,9 +47,9 @@
   });
 
   const buffer = [];
-  r1.on("line", function (line) {
+  r1.on("line", (line) => {
     buffer.push(line);
-  }).on("close", function () {
+  }).on("close", () => {
     main(buffer);
   });
 })();
@@ -69,9 +68,9 @@ const solution = (arr) => {
   Object.values(collected).forEach((el) => el.sort((a, b) => a - b));
   // 양 옆 비교하며 sum 구하기
   Object.values(collected).forEach((wrap) => {
-    wrap.forEach((el, idx, arr) => {
-      const smaller = arr[idx + 1] - el;
-      const bigger = el - arr[idx - 1];
+    wrap.forEach((el, idx, array) => {
+      const smaller = array[idx + 1] - el;
+      const bigger = el - array[idx - 1];
 
       if (idx === 0) {
         sum += smaller;

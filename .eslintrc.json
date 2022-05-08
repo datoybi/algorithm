@@ -18,10 +18,11 @@
 			"global-require": 0,
 			"no-tabs": "off",
 			"no-param-reassign": "off",
-			"no-trailing-spaces" : "warn",
+			"no-trailing-spaces" : "off",
 			"spaced-comment": ["error", "always", { "block": { "exceptions": ["*"] } }],
 			"operator-linebreak":"off",
 			"prefer-template" : "off",
-			"comma-dangle":"off"
+			"comma-dangle":"off",
+			"no-multiple-empty-lines":"off"
 		}
 }
