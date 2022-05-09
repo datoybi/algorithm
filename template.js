@@ -17,28 +17,6 @@ const input = require("fs")
 // ************************
 // readline을 권장한다고 합니다
 
-// 한줄
-// (() => {
-//   const readline = require("readline");
-//   const r1 = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//   });
-
-//   r1.on("line", function (line) {
-//     console.log(line);
-
-//     r1.close();
-//   }).on("close", function () {
-// 		main(line);
-//     process.exit();
-//   });
-// })();
-
-// const main = (input) => {
-// };
-
-// 여러줄
 (() => {
   const readline = require("readline");
   const r1 = readline.createInterface({
