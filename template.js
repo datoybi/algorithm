@@ -17,15 +17,12 @@ const input = require("fs")
 // ************************
 // readline을 권장한다고 합니다
 
-(() => {
-  const readline = require("readline");
-  const r1 = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+const { stdin: input, stdout: output } = require("process");
 
+(() => {
+  const rl = require("readline").createInterface({ input, output });
   const buffer = [];
-  r1.on("line", (line) => {
+  rl.on("line", (line) => {
     buffer.push(line);
   }).on("close", () => {
     main(buffer);
@@ -34,10 +31,4 @@ const input = require("fs")
 
 const main = (input) => {
   console.log(input);
-  input.toString().trim().split("\n");
-
-  console.log(input);
-  input.shift();
-  const arr = input.map((el) => el.split(" "));
-  console.log(arr);
 };
