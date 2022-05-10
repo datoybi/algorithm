@@ -30,15 +30,12 @@ K <= N
 
 */
 
-(() => {
-  const readline = require("readline");
-  const r1 = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+const { stdin: input, stdout: output } = require("process");
 
+(() => {
+  const rl = require("readline").createInterface({ input, output });
   const buffer = [];
-  r1.on("line", (line) => {
+  rl.on("line", (line) => {
     buffer.push(line);
   }).on("close", () => {
     main(buffer);
@@ -77,7 +74,7 @@ const binarySearch = (left, right, lines, N) => {
 const determination = (h, lines, N) => {
   let sum = 0;
   lines.forEach((el) => {
-    sum += Math.floor(el / h, 10);
+    sum += ~~(el / h);
   });
   return sum >= N;
 };
