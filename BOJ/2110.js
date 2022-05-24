@@ -44,8 +44,8 @@ const { stdin: input, stdout: output } = require("process");
   });
 })();
 
-const main = (input) => {
-  const [N, C, router] = setArray(input);
+const main = (value) => {
+  const [N, C, router] = setArray(value);
   console.log(N);
   console.log(C);
   console.log(router);
@@ -57,8 +57,8 @@ const main = (input) => {
   console.log(answer);
 };
 
-const setArray = (input) => {
-  const [N, C] = input
+const setArray = (value) => {
+  const [N, C] = value
     .shift()
     .split(" ")
     .map((el) => parseInt(el, 10));
@@ -67,6 +67,7 @@ const setArray = (input) => {
 };
 
 const binarySearch = (left, right, router, N, C) => {
+  let answer;
   while (left <= right) {
     const mid = parseInt((left + right) / 2, 10);
     if (determination(mid, router, N, C)) {
