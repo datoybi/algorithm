@@ -42,3 +42,10 @@ https://developer-alle.tistory.com/393
 나도 parseint했다가 에러나서 math.floor 했는데 통과했었다.
 parseInt보다는 Math.floor를,
 Math.floor 보다는 ~~ 쓰기(빠름빠름)!@#
+
+## 문풀하다가 느낀점
++ json 지양하기 -> 배열이 다루기 훨 쉽다..
++ 중복제거엔 Set 사용하기 
++ 정규표현식 공부하기
++ if문에 0 들어가면 무조건 false!
+
