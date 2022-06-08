@@ -49,3 +49,11 @@ Math.floor 보다는 ~~ 쓰기(빠름빠름)!@#
 + 정규표현식 공부하기
 + if문에 0 들어가면 무조건 false!
 
+
+### js array 중복 채크
+```
+function isDuplicated(participant) {
+    const [result] = participant.filter((name, idx) => (participant.indexOf(name) !== idx));
+    return result;
+}
+```
