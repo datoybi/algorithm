@@ -57,3 +57,7 @@ function isDuplicated(participant) {
     return result;
 }
 ```
+set 사용 (전체 중복값 없앨 때)
+```
+ const arr = [...new Set(nums)];
+```
