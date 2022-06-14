@@ -1,21 +1,22 @@
 function solution(n, m) {
-  const nArr = getDivide(n);
-  const mArr = getDivide(m);
+  let answer = [1, n * m];
 
-  let gfc = 1;
-  let lcm = n * m;
-
-  nArr.map((n) => {
-    if (mArr.includes(n)) {
-      gfc = Math.max(gfc, n);
+  const n1 = getDivide(n);
+  const m1 = getDivide(m);
+  n1.map((n) => {
+    if (m1.includes(n)) {
+      answer[0] = Math.max(answer[0], n);
     }
   });
-  console.log(great);
 
-  // 요기하는 중 !
-  const nArr = getMultiply(n);
+  const n2 = getMultiply(n, m);
+  const m2 = getMultiply(m, n);
+  n2.map((n) => {
+    if (m2.includes(n)) {
+      answer[1] = Math.min(answer[1], n);
+    }
+  });
 
-  var answer = [];
   return answer;
 }
 
@@ -27,12 +28,33 @@ function getDivide(num) {
   return arr;
 }
 
-function getMultiply(num) {
+function getMultiply(num, other) {
   const arr = [];
   let i = 1;
   while (true) {
-    if (num * i > 1000000) break;
+    if (num * i > num * other) break;
     arr.push(num * i);
+    i += 1;
   }
   return arr;
+}
+
+// 모범답안 1
+function gcdlcm(a, b) {
+  var r;
+  for (var ab = a * b; (r = a % b); a = b, b = r) {}
+  return [b, ab / b];
+}
+
+// 모범답안 2
+function gcdlcm(a, b) {
+  var gcd = calc_gcd(a, b);
+  var lcm = (a * b) / gcd;
+
+  return [gcd, lcm];
+}
+
+function calc_gcd(a, b) {
+  if (b == 0) return a;
+  return a > b ? calc_gcd(b, a % b) : calc_gcd(a, b % a);
 }
