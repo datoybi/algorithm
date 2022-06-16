@@ -38,3 +38,13 @@ function solution(s) {
   }
   return arr.length > 0 ? 0 : 1;
 }
+
+function solution(s) {
+  const stack = [];
+  [...s].forEach((el) => {
+    if (stack[stack.length - 1] === el) stack.pop();
+    else stack.push(el);
+  });
+
+  return stack.length > 0 ? 0 : 1;
+}
