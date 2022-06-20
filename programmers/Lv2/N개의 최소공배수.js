@@ -14,7 +14,7 @@ function solution(arr) {
 function calculate(a, b) {
   if (b === 0) return a;
   return a > b ? calculate(b, a % b) : calculate(a, b % a);
-}
+}	
 
 // 모범답안 최소공배수, 최대공약수는 이렇게 구하는거구나
 function nlcm(num) {
