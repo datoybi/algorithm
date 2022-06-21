@@ -1,18 +1,19 @@
+/*
+	몬가 재귀부분 틀린것같은데.. 한숨 쉬었다가 풀어야겠다 이문제는..ㅜㅜ
+	될듯말듯하면서 안된다. 재귀부분에서 안되는 것 같은데 디버깅 할 에너지가 이젠 없다!@#
+*/
 function solution(p) {
   if (!p) return "";
   if (checkPerfect(p)) return p; // 1
-  let start = 0;
-  let end = 0;
   const arr = [...p];
   var answer = "";
   let idx = split(arr);
   let [u, v] = split(arr);
 
   while (true) {
-    // let [u, v] = split(arr);
     let temp = "";
-    console.log(" u : " + u);
-    console.log(" v : " + v);
+    // console.log(' u : ' + u.join(''));
+    // console.log(' v : ' + v.join(''));
 
     if (checkPerfect(u)) {
       // 3
@@ -20,16 +21,15 @@ function solution(p) {
       [u, v] = split(v);
     } else {
       // 4
-      temp = `(${v.join("")})`;
+      temp = `(${v.join("")})`; // 이부분이 틀린것 같은데.. 재귀가..
       u.shift();
       u.pop();
-      u.reverse();
+      u = [...u].map((el) => (el === "(" ? ")" : "("));
       temp += u.join("");
       console.log(temp);
       if (checkPerfect(temp)) {
         answer += temp;
         break;
-      } else {
       }
     }
   }
@@ -70,4 +70,29 @@ function checkPerfect(p) {
     }
   });
   return check;
+}
+
+// !:모범답안
+function reverse(str) {
+  return str
+    .slice(1, str.length - 1)
+    .split("")
+    .map((c) => (c === "(" ? ")" : "("))
+    .join("");
+}
+
+function solution(p) {
+  if (p.length < 1) return "";
+
+  let balance = 0;
+  let pivot = 0;
+  do {
+    balance += p[pivot++] === "(" ? 1 : -1;
+  } while (balance !== 0);
+
+  const u = p.slice(0, pivot);
+  const v = solution(p.slice(pivot, p.length));
+
+  if (u[0] === "(" && u[u.length - 1] == ")") return u + v;
+  else return "(" + v + ")" + reverse(u);
 }
