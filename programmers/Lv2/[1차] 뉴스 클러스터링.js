@@ -1,6 +1,6 @@
-// https://programmers.co.kr/questions/25235
-// 교집합 수정 요함
-
+/*
+	잘 풀었는데 세세한 예외처리들을 못한게 아쉽다. 그래도 잘 풀어서 뿌듯하다.
+*/
 function solution(str1, str2) {
   const arr1 = [...str1.toLowerCase()];
   const arr2 = [...str2.toLowerCase()];
@@ -20,41 +20,31 @@ function solution(str1, str2) {
       if (isString(str) === true) set2.push(`${arr2[i]}${arr2[i + 1]}`);
     }
   }
-  console.log(set1);
-  console.log(set2);
 
   let inArr = [];
-  let temp1 = [...set1];
-  let temp2 = [...set2];
 
-  set1 = ["a", "a", "b", "b", "c"];
-  set2 = ["a", "b", "b", "d", "e"];
-  // 여기 수정해보기 교집합..
   for (let i = 0; i < set1.length; i++) {
     for (let j = 0; j < set2.length; j++) {
       if (set1[i] === set2[j]) {
         inArr.push(set1[i]);
+        set1[i] = "";
+        set2[j] = "";
         break;
       }
     }
   }
-
-  console.log(inArr);
-  let answer =
-    Math.floor(
-      (inArr.length / (set1.length + set2.length - inArr.length)) * 65536
-    ) || 65536;
+  let inLength = inArr.length;
+  let outLenghth = set1.length + set2.length - inArr.length;
+  if (inLength === 0 && outLenghth === 0) {
+    inLength = 1;
+    outLenghth = 1;
+  }
+  let answer = Math.floor((inLength / outLenghth) * 65536);
   return answer;
 }
 
 function isString(str) {
-  let isSpecial = /[`+-=~!@#$%^&*|\\\'\";:\/?]/gi;
-  let isNum = /[0-9]/;
-  if (
-    str.search(/\s/) !== -1 ||
-    isSpecial.test(str) === true ||
-    isNum.test(str) === true
-  ) {
+  if (str.match(/[\W\d_]/gi)) {
     return false;
   }
   return true;
