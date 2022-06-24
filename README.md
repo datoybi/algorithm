@@ -68,3 +68,11 @@ set 사용 (전체 중복값 없앨 때)
 ```
  const arr = [...new Set(nums)];
 ```
+
+## 정규식
+### 공백 제거 
+```
+    console.log('was'.search(/\s/)) // 공백이 없으면 -1 
+    console.log(' '.search(/\s/)) // 공백이 있으면 0 
+
+```
