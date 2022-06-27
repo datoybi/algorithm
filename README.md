@@ -57,10 +57,19 @@ Math.floor 보다는 ~~ 쓰기(빠름빠름)!@#
 ### js array 중복 채크
 
 ```
-function isDuplicated(participant) {
-    const [result] = participant.filter((name, idx) => (participant.indexOf(name) !== idx));
-    return result;
+function solution(arr) {
+  const dic = [...new Set(arr)]; // 중복 제거한 dic
+  const answer = [];
+
+  dic.forEach(el => {
+    const count = arr.filter(el2 => el2 === el).length; // 원소 갯수 세기
+    answer.push([el, count])
+  })
+  return answer;
 }
+
+ console.log(solution([1,2,3,3]))
+
 ```
 
 set 사용 (전체 중복값 없앨 때)
@@ -70,9 +79,11 @@ set 사용 (전체 중복값 없앨 때)
 ```
 
 ## 정규식
-### 공백 제거 
+
+### 공백 제거
+
 ```
-    console.log('was'.search(/\s/)) // 공백이 없으면 -1 
-    console.log(' '.search(/\s/)) // 공백이 있으면 0 
+    console.log('was'.search(/\s/)) // 공백이 없으면 -1
+    console.log(' '.search(/\s/)) // 공백이 있으면 0
 
 ```
