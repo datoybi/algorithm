@@ -20,6 +20,41 @@ return a - b;
 console.log(arr1); // [ 3, 20, 100 ]
 ```
 
+### 2차원 sort
+```
+	const arr = [
+  [6, 6],
+  [2, 2],
+  [4, 3],
+  [4, 5],
+  [10, 3],
+]
+ 
+// 오름차순
+arr.sort((a, b) => a[0] + a[1] - (b[0] + b[1]))
+ 
+console.log(arr)
+👉🏽 [ [ 2, 2 ], [ 4, 3 ], [ 4, 5 ], [ 6, 6 ], [ 10, 3 ] ]
+ 
+// 내림차순
+arr.sort((a, b) => b[0] + b[1] - (a[0] + a[1]))
+ 
+console.log(arr)
+👉🏽 [ [ 10, 3 ], [ 6, 6 ], [ 4, 5 ], [ 4, 3 ], [ 2, 2 ] ]
+ 
+// arr[0]이 같으면 arr[1] 기준으로 오름차순 정렬
+arr.sort((a, b) => {
+  if (a[0] === b[0]) {
+    return a[1] - b[1]
+  } else {
+    return a[0] - b[0]
+  }
+})
+ 
+console.log(arr)
+👉 [ [ 2, 2 ], [ 4, 3 ], [ 4, 5 ], [ 6, 6 ], [ 10, 3 ] ]
+// https://ywtechit.tistory.com/269
+```
 ## 각각의 메서드에 대한 시간복잡도<br>
 
 https://kimyejin.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Array-%EB%A9%94%EC%86%8C%EB%93%9C-%EB%B0%8F-%EC%98%88%EC%A0%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EC%8B%9C%EA%B0%84-%EB%B3%B5%EC%9E%A1%EB%8F%84-Big-O
