@@ -30,7 +30,7 @@
     input: process.stdin,
     output: process.stdout,
   });
-
+	
   const buffer = [];
   r1.on("line", (line) => {
     buffer.push(line);
