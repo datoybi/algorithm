@@ -1,6 +1,5 @@
-/* eslint-disable no-shadow */
+// BOJ
 // fs
-
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 const input = require("fs")
   .readFileSync(filePath)
@@ -8,9 +7,7 @@ const input = require("fs")
   .trim()
   .split("\n");
 
-// ************************
 // readline
-// ************************
 // readline을 권장한다고 합니다
 
 const { stdin: input, stdout: output } = require("process");
