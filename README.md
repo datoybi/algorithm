@@ -111,6 +111,8 @@ console.log("was".search(/\s/)); // 공백이 없으면 -1
 console.log(" ".search(/\s/)); // 공백이 있으면 0
 ```
 
+---
+
 ### 배열을 출력할 때
 
 ```
@@ -133,7 +135,7 @@ console.log(" ".search(/\s/)); // 공백이 있으면 0
 ```
 
 ```jsx
-// forEach는 시간초과가 난다! map을 쓰자
+// forEach나 for문은 시간초과가 난다! map을 쓰자
 
 // ⭕
 console.log(answer.map((element) => element.join(" ")).join("\n"));
@@ -142,6 +144,11 @@ console.log(answer.map((element) => element.join(" ")).join("\n"));
 answer.forEach(([a, b]) => {
   console.log(a, b);
 });
+
+// ❌
+for (let i = 0; i < answer.length; i++) {
+  console.log(answer[i].join(" "));
+}
 ```
 
-map(), forEach() 둘다 O(N)인데 차이가 나는 이유는 모르겠다🤔
+map(), forEach() 둘다 O(N)인데 차이가 나는 이유는 모르겠다. 🤔

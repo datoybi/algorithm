@@ -1,6 +1,6 @@
 /*
-	하노이의 탑 플레이 : https://vidkidz.tistory.com/649
 	하노이 탑 이동 순서
+	하노이의 탑 플레이 : https://vidkidz.tistory.com/649
 	https://www.acmicpc.net/problem/11729
 */
 
