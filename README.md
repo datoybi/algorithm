@@ -152,3 +152,31 @@ for (let i = 0; i < answer.length; i++) {
 ```
 
 map(), forEach() 둘다 O(N)인데 차이가 나는 이유는 모르겠다. 🤔
+
+---
+
+## 2차원 배열 new Array().fill() 할 때 주의점
+
+```jsx
+const visited = new Array(n + 1).fill(false); // 원시타입을 fill 하는건 상관없지만
+
+const graph1 = [...new Array(5)].map(() => []); // ❌
+const graph2 = [...new Array(5)].fill([]); // ⭕
+```
+
+fill()을 사용하면 같은 참조값을 공유하게 된다.
+
+```jsx
+graph1[1].push("1");
+graph2[1].push("1");
+
+console.log(graph1);
+// [[], ["1"], [], [], []];
+console.log(graph2);
+// [[], ["1"], ["1"], ["1"], ["1"]];
+
+console.log(graph1[1] === graph1[2]); // false
+console.log(graph2[1] === graph2[2]); // true
+```
+
+그러므로 `map으로 할당`하는 방법을 채택하는 것이 좋다.
