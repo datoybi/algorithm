@@ -35,6 +35,36 @@ const visited = Array(6).fill(false);
 dfs(graph, 0, visited);
 ```
 
+## stack을 이용한 방법 (Iterative DFS)
+
+재귀로 하면.. call stack이 터진다.
+
+```
+function dfs(graph, start, visited) {
+  const stack = [];
+  stack.push(start);
+
+  while (stack.length) {
+    let v = stack.pop();
+    if (!visited[v]) {
+      console.log(v);
+      visited[v] = true;
+
+      for (let node of graph[v]) {
+        if (!visited[node]) {
+          stack.push(node);
+        }
+      }
+    }
+  }
+}
+const graph = [[1, 2, 4], [0, 5], [0, 5], [4], [0, 3], [1, 2]];
+const visited = Array(7).fill(false);
+
+dfs(graph, 0, visited);
+// 0 4 3 2 5 1
+```
+
 ### WHEN
 
 - `모든 정점을 방문`하는 것이 주요한 문제일 때 사용
@@ -65,14 +95,12 @@ function bfs(graph, start, visited) {
     const v = queue.shift();
     console.log(v);
 
-    for (const node of graph[v]) {
-      graph[v].map((node) => {
-        if (!visited[node]) {
-          queue.push(node);
-          visited[node] = true;
-        }
-      });
-    }
+    graph[v].map((node) => {
+      if (!visited[node]) {
+        queue.push(node);
+        visited[node] = true;
+      }
+    });
   }
 }
 
