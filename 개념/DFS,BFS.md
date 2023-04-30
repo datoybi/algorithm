@@ -14,7 +14,7 @@
 2. 노드를 방문할 때마다 해당 노드의 visited 배열 값을 true로 변경한다.
 3. 해당 노드(v)와 연결된 노드 중에 방문하지 않은 노드(node)가 있다면 방문하지 않은 노드를 시작점으로 하여 DFS를 다시 시작한다.
 
-```jsx
+```js
 function dfs(graph, v, visited) {
   // 현재 노드를 방문 처리
   visited[v] = true;
@@ -39,7 +39,7 @@ dfs(graph, 0, visited);
 
 재귀로 하면.. call stack이 터진다.
 
-```
+```js
 function dfs(graph, start, visited) {
   const stack = [];
   stack.push(start);
@@ -58,8 +58,6 @@ function dfs(graph, start, visited) {
     }
   }
 }
-const graph = [[1, 2, 4], [0, 5], [0, 5], [4], [0, 3], [1, 2]];
-const visited = Array(7).fill(false);
 
 dfs(graph, 0, visited);
 // 0 4 3 2 5 1
