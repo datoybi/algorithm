@@ -1,3 +1,7 @@
+// https://www.acmicpc.net/problem/7569
+// 토마토
+// 굿 안보고 디버깅 잘해서 잘 풀음
+
 // 입력
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 const [num, ...input] = require("fs")
