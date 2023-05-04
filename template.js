@@ -25,3 +25,16 @@ const { stdin: input, stdout: output } = require("process");
 const main = (input) => {
   console.log(input);
 };
+
+require("readline")
+  .createInterface(process.stdin, process.stdout)
+  .on("line", (line) => {
+    console.log(sol(line));
+  })
+  .on("close", () => {
+    process.exit();
+  });
+
+const solution = (input) => {
+  console.log(input);
+};
