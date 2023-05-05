@@ -1,3 +1,6 @@
+// https://www.acmicpc.net/problem/13549
+// 숨바꼭질 3
+
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 const [n, k] = require("fs")
   .readFileSync(filePath)
