@@ -160,8 +160,8 @@ map(), forEach() 둘다 O(N)인데 차이가 나는 이유는 모르겠다. 🤔
 ```jsx
 const visited = new Array(n + 1).fill(false); // 원시타입을 fill 하는건 상관없지만
 
-const graph1 = [...new Array(5)].map(() => []); // ❌
-const graph2 = [...new Array(5)].fill([]); // ⭕
+const graph1 = [...new Array(5)].map(() => []); // ⭕
+const graph2 = [...new Array(5)].fill([]); // ❌
 ```
 
 fill()을 사용하면 같은 참조값을 공유하게 된다.
