@@ -187,3 +187,5 @@ console.log(graph2[1] === graph2[2]); // true
 const num = 123;
 console.log(...(num + ""));
 ```
+
+~~ :double tiled : Math.floor 가능, 나눗셈 몫만 할때 : ~~(5/6)

@@ -1,4 +1,4 @@
-/*
+a; /*
 	TODO: 재도전 해보기
 	https://www.acmicpc.net/problem/14888
 	연산자 끼워넣기
