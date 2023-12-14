@@ -1,11 +1,7 @@
 // BOJ
 // fs
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
-const input = require("fs")
-  .readFileSync(filePath)
-  .toString()
-  .trim()
-  .split("\n");
+const input = require("fs").readFileSync(filePath).toString().trim().split("\n");
 
 // readline
 // readline을 권장한다고 합니다
@@ -29,7 +25,7 @@ const main = (input) => {
 require("readline")
   .createInterface(process.stdin, process.stdout)
   .on("line", (line) => {
-    console.log(sol(line));
+    console.log(solution(line));
   })
   .on("close", () => {
     process.exit();
