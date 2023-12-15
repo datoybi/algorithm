@@ -40,3 +40,40 @@ const solution = (input) => {
   recursive();
   console.log(result);
 };
+
+/*
+	시간복잡도 : 8! 보다 작음 -> 가능
+*/
+
+require("readline")
+  .createInterface(process.stdin, process.stdout)
+  .on("line", (line) => {
+    solution(line);
+  })
+  .on("close", () => {
+    process.exit();
+  });
+
+const solution = (input) => {
+  const [N, M] = input.split(" ").map(Number);
+  const selected = [];
+  let result = "";
+
+  const recursive = () => {
+    if (selected.length === M) {
+      result += selected.join(" ");
+      result += "\n";
+    } else {
+      for (let i = 1; i <= N; i++) {
+        if (selected.every((el) => el <= i)) {
+          selected.push(i);
+          recursive();
+          selected.pop();
+        }
+      }
+    }
+  };
+
+  recursive();
+  console.log(result);
+};

@@ -40,3 +40,40 @@ const solution = (input) => {
   recursive();
   console.log(result);
 };
+
+/*
+	시간복잡도 : N이 8을 안넘은는데 최대 될 수 있는 값을 구해보면 8!이다 -> 40만
+*/
+
+require("readline")
+  .createInterface(process.stdin, process.stdout)
+  .on("line", (line) => {
+    solution(line);
+  })
+  .on("close", () => {
+    process.exit();
+  });
+
+const solution = (input) => {
+  const [N, M] = input.split(" ").map(Number);
+  const selected = [];
+  let result = "";
+
+  const recursive = () => {
+    if (selected.length === M) {
+      result += selected.join(" ");
+      result += "\n";
+    } else {
+      for (let i = 1; i <= N; i++) {
+        if (selected.every((el) => el < i) && !selected.includes(i)) {
+          selected.push(i);
+          recursive();
+          selected.pop();
+        }
+      }
+    }
+  };
+
+  recursive();
+  console.log(result);
+};

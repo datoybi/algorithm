@@ -2,13 +2,14 @@
 
 - 시간복잡도 : O(n log n)
 - 자바스크립트는 정렬할 때 숫자도 유니코드(문자열) 취급한 뒤 정렬한다.그래서 return a - b 을 해주는데 각각의 의미는 아래와 같다.
-- 음수가 리턴되면 a < b 를 의미,양수가 리턴되면 a > b 를 의미,0이 리턴되면 a == b을 의미.
+- 음수가 리턴되면 a < b 를 의미, 양수가 리턴되면 a > b 를 의미, 0이 리턴되면 a == b을 의미.
+- b-a - 내림차순, a-b - 오름차순
 
 ```jsx
 const arr1 = [100, 3, 20];
 arr1.sort(); // [ 100, 20, 3 ]
 
-arr1.sort(function (a, b) {
+arr1.sort((a, b) => {
   return a - b;
 });
 
@@ -52,32 +53,12 @@ console.log(arr);
 // https://ywtechit.tistory.com/269
 ```
 
-## 각각의 메서드에 대한 시간복잡도
-
-[https://kimyejin.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Array-%EB%A9%94%EC%86%8C%EB%93%9C-%EB%B0%8F-%EC%98%88%EC%A0%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EC%8B%9C%EA%B0%84-%EB%B3%B5%EC%9E%A1%EB%8F%84-Big-O](https://kimyejin.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Array-%EB%A9%94%EC%86%8C%EB%93%9C-%EB%B0%8F-%EC%98%88%EC%A0%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EC%8B%9C%EA%B0%84-%EB%B3%B5%EC%9E%A1%EB%8F%84-Big-O)
-
-## JS 에서 Number 범위? '약 천조'
-
-= 9007199254740991 ~ -9007199254740991 = (2^53 - 1) ~ -(2^53 - 1)
-
-획인도 해보기 console.log( Number.isSafeInteger(a) );
-
-[https://hanch-dev.tistory.com/4](https://hanch-dev.tistory.com/4)
-
-[https://serzhul.io/Algorithm/%EB%B0%B0%EC%97%B4%EA%B3%BC-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D-(big-o)/](<https://serzhul.io/Algorithm/%EB%B0%B0%EC%97%B4%EA%B3%BC-%EA%B0%9D%EC%B2%B4%EC%9D%98-%EC%84%B1%EB%8A%A5-%EB%B6%84%EC%84%9D-(big-o)/>)
-
-아 인싸이트 얻은게 console.log를 매번 찎으면 안된다! 되도록 변수에 담아서 한번만 뿌리기
-
-왜냐하면 찾아보니 console.log()의 시간복잡도가 O(N)인데 N이 무한대까지 커지게 된다면 시간을 꽤나 잡아 먹을 수 도 있기 때문에 굳이.. 매번 찎지 않아도 되는 쪽을 택하자
-
-[https://developer-alle.tistory.com/393](https://developer-alle.tistory.com/393) 나도 parseint했다가 에러나서 math.floor 했는데 통과했었다. parseInt보다는 Math.floor를, Math.floor 보다는 ~~ 쓰기(빠름빠름)!@#
-
-## 문풀하다가 느낀점
-
-- json 지양하기 -> 이차원 삼차원 가면 배열이 다루기 훨 쉽다..
+- [각각의 메서드에 대한 시간복잡도](https://kimyejin.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Array-%EB%A9%94%EC%86%8C%EB%93%9C-%EB%B0%8F-%EC%98%88%EC%A0%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EC%8B%9C%EA%B0%84-%EB%B3%B5%EC%9E%A1%EB%8F%84-Big-O)
+- JS 에서 Number 범위? '약 천조'
+- console.log() 되도록 변수에 담아서 한번만 사용하기 - console.log()의 시간복잡도가 O(N)
+- 나머지 떨구기 빠른 순서 ~~ > Math.floor() > parseInt
+- json 지양하기 -> 이차원, 삼차원 가면 배열이 다루기 훨 쉽다.
 - 중복제거엔 Set 사용하기
-- 정규표현식 공부하기 \* 2
-- if문에 0 들어가면 무조건 false!
 
 ### js array 중복 채크
 
@@ -96,12 +77,6 @@ function solution(arr) {
 console.log(solution([1, 2, 3, 3]));
 ```
 
-set 사용 (전체 중복값 없앨 때)
-
-```jsx
-const arr = [...new Set(nums)];
-```
-
 ## 정규식
 
 ### 공백 제거
@@ -113,55 +88,11 @@ console.log(" ".search(/\s/)); // 공백이 있으면 0
 
 ---
 
-### 배열을 출력할 때
-
-```
-// 이런 배열을
-[
-  [ 1, 3 ], [ 1, 2 ],
-  [ 3, 2 ], [ 1, 3 ],
-  [ 2, 1 ], [ 2, 3 ],
-  [ 1, 3 ]
-]
-
-// 이렇게 출력해야 할 때
-1 3
-1 2
-3 2
-1 3
-2 1
-2 3
-1 3
-```
-
-```jsx
-// forEach나 for문은 시간초과가 난다! map을 쓰자
-
-// ⭕
-console.log(answer.map((element) => element.join(" ")).join("\n"));
-
-// ❌
-answer.forEach(([a, b]) => {
-  console.log(a, b);
-});
-
-// ❌
-for (let i = 0; i < answer.length; i++) {
-  console.log(answer[i].join(" "));
-}
-```
-
-map(), forEach() 둘다 O(N)인데 차이가 나는 이유는 모르겠다. 🤔
-
----
-
 ## 2차원 배열 new Array().fill() 할 때 주의점
 
 ```jsx
-const visited = new Array(n + 1).fill(false); // 원시타입을 fill 하는건 상관없지만
-
-const graph1 = [...new Array(5)].map(() => []); // ⭕
-const graph2 = [...new Array(5)].fill([]); // ❌
+const graph1 = [...new Array(5)].map(() => []); // ❌
+const graph2 = [...new Array(5)].fill([]); // ⭕
 ```
 
 fill()을 사용하면 같은 참조값을 공유하게 된다.
@@ -171,21 +102,12 @@ graph1[1].push("1");
 graph2[1].push("1");
 
 console.log(graph1);
-// [[], ["1"], [], [], []];
+[[], ["1"], [], [], []];
 console.log(graph2);
-// [[], ["1"], ["1"], ["1"], ["1"]];
+[[], ["1"], [], [], []];
 
 console.log(graph1[1] === graph1[2]); // false
 console.log(graph2[1] === graph2[2]); // true
 ```
 
 그러므로 `map으로 할당`하는 방법을 채택하는 것이 좋다.
-
-## Number 123 -> '1' '2' '3'
-
-```jsx
-const num = 123;
-console.log(...(num + ""));
-```
-
-~~ :double tiled : Math.floor 가능, 나눗셈 몫만 할때 : ~~(5/6)
