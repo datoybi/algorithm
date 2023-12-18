@@ -88,11 +88,12 @@ console.log(" ".search(/\s/)); // 공백이 있으면 0
 
 ---
 
-## 2차원 배열 new Array().fill() 할 때 주의점
+## 2차원 배열 선언 new Array().fill() 할 때 주의점
 
 ```jsx
 const graph1 = [...new Array(5)].map(() => []); // ❌
 const graph2 = [...new Array(5)].fill([]); // ⭕
+const result = Array.from(Array(8), () => Array(8).fill(0)); // 찐
 ```
 
 fill()을 사용하면 같은 참조값을 공유하게 된다.
