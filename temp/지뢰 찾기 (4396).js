@@ -3,8 +3,7 @@
 	지뢰찾기
 
 	맞왜틀!!!!!!!!!!!!
-*/
-const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
+*/ const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 const input = require("fs").readFileSync(filePath).toString().trim().split("\n");
 const N = +input.shift();
 const board1 = input.slice(0, N).map((el) => el.split(""));
@@ -37,7 +36,7 @@ const solution = () => {
           for (let z = 0; z < 8; z++) {
             const nx = i + dx[z];
             const ny = j + dy[z];
-            if (nx < 0 || 7 < nx || ny < 0 || 7 < ny) continue;
+            if (nx < 0 || N - 1 - 1 < nx || ny < 0 || N - 1 < ny) continue;
             if (board1[nx][ny] === "*") {
               result[i][j] += 1;
             }
@@ -61,4 +60,11 @@ x.
 ..
 
 
+3
+.*.
+*.*
+.*.
+xxx
+xㅌx
+xxx
 */
