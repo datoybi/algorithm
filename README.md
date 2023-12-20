@@ -112,3 +112,11 @@ console.log(graph2[1] === graph2[2]); // true
 ```
 
 그러므로 `map으로 할당`하는 방법을 채택하는 것이 좋다.
+
+## 배열 n개씩 나누어 묶기
+
+const arr = [0, 0, 0, 0, 0,0,0 ,0,0,0,0,0,0,0];
+const SIZE = 5;
+for (let i = 0; i < arr.length; i += SIZE) {
+console.log(switches.slice(i, i + SIZE).join(" "));
+}
