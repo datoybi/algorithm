@@ -1,0 +1,26 @@
+{
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "extends": ["prettier", "airbnb-base", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "linebreak-style": "off",
+    "max-classes-per-file": "off",
+    "no-console": "off",
+    "no-shadow": "off",
+    "lines-between-class-members": "off",
+    "prefer-destructuring": "off",
+    "no-continue": "off",
+    "no-restricted-syntax": "off"
+  }
+}
