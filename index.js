@@ -1,7 +1,5 @@
 /*
-	달팽이
-	https://www.acmicpc.net/problem/1913
-*/
+ */
 
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 const input = require("fs")
@@ -10,53 +8,32 @@ const input = require("fs")
   .trim()
   .split("\n");
 
-const N = +input[0];
-const num = +input[1];
-const graph = Array.from(Array(N), () => Array(N).fill(0));
+const arr = input[0].split("");
+console.log(arr);
+let result = [];
+const quack = ["q", "u", "a", "c", "k"];
 
-console.log(N);
-console.log(num);
-// console.log(graph);
-let count = 1;
-count += 1;
+for (i = 0; i < arr.length; i++) {
+  const index = quack.findIndex((e) => e === arr[i]);
+  console.log(index);
 
-for (let i = 3; i <= N; i += 2) {
-  const start = ~~(i / 2);
-  console.log("start ", start);
-  graph[start][start] = count;
+  if (index === 0) {
+    result = [...result, ["p"]];
+  } else {
+    result.map((el) => {
+      el.map((e) => {
+        const idx = quack.findIndex((e) => e === el);
+        console.log("idx ", idx);
+        // console.log(el, idx);
+      });
+      // const idx = quack.findIndex((e) => e === el);
 
-  // up
-  for (let j = 1; j <= i / 3; j++) {
-    // console.log("i : ", i, "j : ", j);
-    graph[(start, start - j)] = count; // 3,2
-    count += 1;
+      // if (idx + 1 === index) {
+      //   el.push(arr[i]);
+      // }
+      //el의 마지막이 quack의 kau
+    });
   }
-
-  // right
-  for (let j = 1; j <= i / 3 + 1; j++) {
-    graph[(start + 1, start - j)] = count; // 4,2
-    count += 1;
-  }
-  // down
-  graph[(start + 1, start)] = count; // 4,3
-  count += 1;
-
-  graph[(start + 1, start + 1)] = count; // 4,4
-  count += 1;
-
-  // left
-  graph[(start, start + 1)] = count; // 3,4
-  count += 1;
-
-  graph[(start - 1, start + 1)] = count; // 2,4
-  count += 1;
-
-  // up
-  graph[(start - 1, start)] = count; // 2,3
-  count += 1;
-
-  graph[(start - 1, start + 1)] = count; // 2,4
-  count += 1;
 }
 
-console.log(graph);
+console.log(result);
