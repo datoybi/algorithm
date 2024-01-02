@@ -18,6 +18,8 @@ console.log(arr1); // [ 3, 20, 100 ]
 
 ### 2차원 sort
 
+1이나 -1을 반환하도록 잘 코드짜기
+
 ```jsx
 const arr = [
   [6, 6],
@@ -120,3 +122,16 @@ const SIZE = 5;
 for (let i = 0; i < arr.length; i += SIZE) {
 console.log(switches.slice(i, i + SIZE).join(" "));
 }
+
+## 배열 중복값 개수 구하기
+
+```
+const arr = ['a', 'b', 'a', 'b', 'c'];
+
+const result = arr.reduce((accu, curr) => {
+  accu[curr] = (accu[curr] || 0)+1;
+  return accu;
+}, {});
+
+document.write(JSON.stringify(result));
+```
